@@ -763,21 +763,33 @@ I thrive on solving complex networking challenges, optimizing infrastructure sta
 
     <div class="contact-container" data-aos="fade-up">
 
-        <form id="contact-form"
-              action="https://formsubmit.co/dkm12sep@gmail.com"
-              method="POST"
-              class="contact-form">
-            <input type="hidden" name="_cc" value="smith.deepak@gmail.com">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_template" value="table">
+     <script>
+document.getElementById("contact-form").addEventListener("submit", function(e) {
+    e.preventDefault();
 
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+    const form = e.target;
+    const status = document.getElementById("form-status");
+    const formData = new FormData(form);
 
-            <button type="submit">Send Message</button>
+    fetch("https://formsubmit.co/ajax/smith.deepak@gmail.com", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        status.innerText = "✅ Message Sent Successfully!";
+        form.reset();
 
-        </form>
+        setTimeout(() => {
+            status.innerText = "";
+        }, 4000);
+    })
+    .catch(error => {
+        status.innerText = "❌ Something went wrong. Try again.";
+    });
+});
+</script>
+
 
 
     </div>
@@ -828,4 +840,5 @@ I thrive on solving complex networking challenges, optimizing infrastructure sta
     </script>
 </body>
 </html>
+
 
