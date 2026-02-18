@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deepak Mishra - Network Engineer</title>
@@ -466,20 +467,78 @@
             text-align: center;
             font-size: 14px;
         }
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 45px; }
-            .hero .title { font-size: 24px; }
-            .hero .description { font-size: 16px; }
-            .about .content { flex-direction: column; text-align: center; }
-            .about-text { text-align: center; }
-            .resp-grid, .exp-grid { grid-template-columns: 1fr; }
-            .exp-header { flex-direction: column; align-items: flex-start; gap: 15px; padding-left: 20px; }
-            .skills-header, .skill-row {
-                grid-template-columns: 1fr;
-                text-align: left;
-                gap: 15px;
-            }
-            .skill-proficiency { text-align: left; }
+       @media (max-width: 768px) {
+
+    nav {
+        padding: 15px 20px;
+    }
+
+    nav ul {
+        gap: 15px;
+    }
+
+    nav ul li {
+        margin-left: 15px;
+    }
+
+    section {
+        padding: 70px 20px;
+    }
+
+    .hero {
+        height: auto;
+        padding-top: 120px;
+        padding-bottom: 60px;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .hero .title {
+        font-size: 18px;
+    }
+
+    .hero .description {
+        font-size: 14px;
+        padding: 0 10px;
+    }
+
+    .hero .buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .hero .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .about .content {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .about-text {
+        text-align: center;
+        font-size: 15px;
+    }
+
+    .exp-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skills-header,
+    .skill-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .skill-proficiency {
+        text-align: left;
+    }
+}
+
         }
     </style>
 </head>
@@ -897,4 +956,5 @@ document.getElementById("contact-form").addEventListener("submit", function(e) {
 
 </body>
 </html>
+
 
