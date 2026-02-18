@@ -763,33 +763,21 @@ I thrive on solving complex networking challenges, optimizing infrastructure sta
 
     <div class="contact-container" data-aos="fade-up">
 
-     <script>
-document.getElementById("contact-form").addEventListener("submit", function(e) {
-    e.preventDefault();
+        <form id="contact-form"
+              action="https://formsubmit.co/dkm12sep@gmail.com"
+              method="POST"
+              class="contact-form">
+            <input type="hidden" name="_cc" value="dkm12sep@gmail.com">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
 
-    const form = e.target;
-    const status = document.getElementById("form-status");
-    const formData = new FormData(form);
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
 
-    fetch("https://formsubmit.co/ajax/smith.deepak@gmail.com", {
-        method: "POST",
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        status.innerText = "✅ Message Sent Successfully!";
-        form.reset();
+            <button type="submit">Send Message</button>
 
-        setTimeout(() => {
-            status.innerText = "";
-        }, 4000);
-    })
-    .catch(error => {
-        status.innerText = "❌ Something went wrong. Try again.";
-    });
-});
-</script>
-
+        </form>
 
 
     </div>
@@ -840,4 +828,3 @@ document.getElementById("contact-form").addEventListener("submit", function(e) {
     </script>
 </body>
 </html>
-
