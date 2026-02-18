@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepak Mishra - Network Engineer</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #fff;
+            background: #0f0f0f;
+            overflow-x: hidden;
+        }
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0; left: 0;
+            z-index: -1;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: 0.5s;
+        }
+        nav.scrolled {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+        nav .logo { font-size: 24px; font-weight: 700; }
+        nav ul { list-style: none; display: flex; }
+        nav ul li { margin-left: 40px; }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        nav ul li a:hover { color: #00d4ff; }
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+        .hero .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid #00d4ff;
+            margin-bottom: 30px;
+            box-shadow: 0 0 20px rgba(0,212,255,0.3);
+        }
+        .hero h1 {
+            font-size: 60px;
+            color: #00d4ff;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0,212,255,0.5);
+        }
+        .hero .title {
+            font-size: 28px;
+            font-weight: 500;
+            opacity: 0.95;
+            margin-bottom: 20px;
+        }
+        .hero .description {
+            max-width: 700px;
+            font-size: 18px;
+            line-height: 1.6;
+            opacity: 0.85;
+            margin-bottom: 40px;
+        }
+        .hero .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .hero .btn {
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .hero .btn-primary {
+            background: #00d4ff;
+            color: #000;
+            box-shadow: 0 4px 15px rgba(0,212,255,0.4);
+        }
+        .hero .btn-primary:hover { background: #00aaff; }
+        .hero .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .hero .btn-secondary:hover { background: rgba(255,255,255,0.2); }
+        .hero .btn-tertiary {
+            background: rgba(0,0,0,0.5);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .hero .btn-tertiary:hover { background: rgba(0,0,0,0.7); }
+        section {
+            padding: 100px 50px;
+            text-align: center;
+        }
+        section h2 {
+            font-size: 42px;
+            margin-bottom: 60px;
+            position: relative;
+            display: inline-block;
+        }
+        section h2::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: #00d4ff;
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .about .content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 100px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .about img {
+            width: 240px;
+            height: 240px;
+            min-width: 240px;
+            min-height: 240px;
+            border-radius: 50%;
+            border: 5px solid #00d4ff;
+            object-fit: cover;
+            display: block;
+            box-shadow: 0 0 35px rgba(0,212,255,0.5);
+}
+
+        }
+        .about-text {
+            max-width: 700px;
+            line-height: 1.9;
+            font-size: 18px;
+            text-align: justify;
+        }
+        .core-responsibilities {
+            background: transparent;
+        }
+        .resp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .resp-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: left;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.4s ease;
+        }
+        .resp-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0,212,255,0.2);
+            background: rgba(0,212,255,0.08);
+        }
+        .resp-icon {
+            font-size: 24px;
+            color: #00d4ff;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .resp-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #00d4ff;
+            margin-bottom: 10px;
+        }
+        .resp-desc {
+            font-size: 16px;
+            line-height: 1.6;
+            opacity: 0.85;
+        }
+        .experience {
+            background: transparent;
+        }
+        .exp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .exp-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+            transition: all 0.4s ease;
+        }
+        .exp-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 16px 40px rgba(0,212,255,0.25);
+            background: rgba(0,212,255,0.1);
+        }
+        .exp-header {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-bottom: 25px;
+            gap: 25px;
+        }
+        .exp-company {
+            font-size: 32px;
+            font-weight: 700;
+            color: #00d4ff;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .exp-company::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: #00d4ff;
+            border-radius: 2px;
+        }
+        .exp-current {
+            background: rgba(255,255,255,0.15);
+            color: #aaa;
+            font-weight: 600;
+            font-size: 15px;
+            padding: 10px 25px;
+            border-radius: 30px;
+            backdrop-filter: blur(5px);
+        }
+        .exp-role {
+            font-size: 22px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        .exp-dates {
+            font-size: 15px;
+            opacity: 0.8;
+            color: #ccc;
+            margin-bottom: 15px;
+        }
+        .exp-desc {
+            font-size: 16px;
+            line-height: 1.7;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        .exp-key-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .exp-key-tech span {
+            background: #00d4ff;
+            color: #000;
+            font-weight: 600;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 14px;
+        }
+        .skills-table {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+        .skills-header {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 20px;
+            font-weight: 600;
+            font-size: 18px;
+            text-align: left;
+        }
+        .skills-header div:nth-child(3) { text-align: right; }
+        .skill-row {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            padding: 25px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            align-items: center;
+            transition: 0.3s;
+        }
+        .skill-row:hover {
+            background: rgba(0, 212, 255, 0.05);
+        }
+        .skill-row:last-child { border-bottom: none; }
+        .skill-tech {
+            font-size: 20px;
+            font-weight: 600;
+        }
+        .skill-purpose {
+            font-size: 16px;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+        .skill-proficiency {
+            text-align: right;
+        }
+        .proficiency-badge {
+            display: inline-block;
+            background: #00d4ff;
+            color: #000;
+            font-weight: 600;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+        }
+        .contact-links a {
+            color: #00d4ff;
+            font-size: 20px;
+            margin: 0 20px;
+            text-decoration: none;
+        }
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 15px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+        }
+
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: #ccc;
+        }
+
+        .contact-form button {
+            padding: 15px;
+            border-radius: 30px;
+            border: none;
+            background: #00d4ff;
+            color: #000;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .contact-form button:hover {
+            background: #00aaff;
+        }
+
+        .call-section {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .call-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 30px;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .call-btn:hover {
+            background: #00d4ff;
+            color: #000;
+        }
+
+
+        footer {
+            padding: 40px;
+            background: #000;
+            text-align: center;
+            font-size: 14px;
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 45px; }
+            .hero .title { font-size: 24px; }
+            .hero .description { font-size: 16px; }
+            .about .content { flex-direction: column; text-align: center; }
+            .about-text { text-align: center; }
+            .resp-grid, .exp-grid { grid-template-columns: 1fr; }
+            .exp-header { flex-direction: column; align-items: flex-start; gap: 15px; padding-left: 20px; }
+            .skills-header, .skill-row {
+                grid-template-columns: 1fr;
+                text-align: left;
+                gap: 15px;
+            }
+            .skill-proficiency { text-align: left; }
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+
+    <nav>
+        <div class="logo">Deepak Mishra</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#core-responsibilities">Core Responsibilities</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <img src="https://media.licdn.com/dms/image/v2/C4D03AQGQS9SccAi5DQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1517063971598?e=1772668800&v=beta&t=67IIKsgjaFNPgAKQoUWUVtptFsL6l_Tc7MWECDK1yjo" alt="Deepak Mishra" class="profile-pic">
+        <h1>Deepak Mishra</h1>
+        <div class="title">Sr. Technical Lead & Network Engineer</div>
+        <p class="description">Specialization in Versa SD-WAN, NFVI, OpenStack, VMware, Network Automation, Linux, Routing & Switching. Leading SDN operations and infrastructure management at Colt Technology Services with focus on network stability and performance excellence.</p>
+        <div class="buttons">
+            <a href="#experience" class="btn btn-primary"><i class="fas fa-code"></i> View Experience</a>
+            <a href="YOUR_RESUME_PDF_URL_HERE" target="_blank" class="btn btn-secondary"><i class="fas fa-file-pdf"></i> View Resume</a>
+            <a href="#contact" class="btn btn-tertiary"><i class="fas fa-envelope"></i> Get In Touch</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 data-aos="fade-up">About Me</h2>
+        <div class="content" data-aos="fade-up">
+            <div class="about-text">
+<p>
+I am a passionate Network Engineer and Senior Technical Lead at Colt Technology Services, based in Gurgaon, Haryana, India (currently working remotely).
+</p>
+
+<p>
+With extensive experience in deployment and managing of Versa SD-WAN , NFVI/OpenStack/VMware environments, and leading network automation initiatives, I specialize in building secure, scalable, and high-performance telecom infrastructure.
+</p>
+
+<p>
+I thrive on solving complex networking challenges, optimizing infrastructure stability, and delivering reliable, enterprise-grade solutions that ensure business continuity and operational excellence.
+</p>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="core-responsibilities" class="core-responsibilities">
+        <h2 data-aos="fade-up">Core Responsibilities</h2>
+        <div class="resp-grid" data-aos="fade-up">
+            <div class="resp-card">
+                <span class="resp-icon"><i class="fas fa-network-wired"></i></span>
+                <div class="resp-title">SDN Operations Leadership</div>
+                <p class="resp-desc">Leading TAC - SDN Operations across roles, including managing end-to-end lifecycle of Versa SD-WAN solutions like deployment, migration, upgrade, and troubleshooting.</p>
+            </div>
+            <div class="resp-card">
+                <span class="resp-icon"><i class="fas fa-cloud"></i></span>
+                <div class="resp-title">NFVI Infrastructure Management</div>
+                <p class="resp-desc">Handling NFVI infrastructure based on Cisco OpenStack and VMware platforms, including deploying NFVI solutions, creating vNF (compute nodes), and managing migrations from Versa hardware to NFVI.</p>
+            </div>
+            <div class="resp-card">
+                <span class="resp-icon"><i class="fas fa-server"></i></span>
+                <div class="resp-title">Virtualization Stack Support</div>
+                <p class="resp-desc">Managing and supporting virtualization stack components such as VMware ESXi, vCenter, vSAN, Storage & Compute clusters, Aria Operations (vROps), Log Collector & Monitoring systems, and Witness VM management/upgrades.</p>
+            </div>
+            <div class="resp-card">
+                <span class="resp-icon"><i class="fas fa-tools"></i></span>
+                <div class="resp-title">Deployment & Operational Support</div>
+                <p class="resp-desc">Performing end-to-end deployment and support of uCPE devices, vNF onboarding/lifecycle management, SD-WAN controllers/gateways migration, and testing services on SD-WAN/NFVI platforms.</p>
+            </div>
+            <div class="resp-card">
+                <span class="resp-icon"><i class="fas fa-user-shield"></i></span>
+                <div class="resp-title">Customer Incident Management</div>
+                <p class="resp-desc">Managing customer-facing activities including handling P1/P2 incidents, detailed RCA and preventive planning, supporting change requests/network expansions, and providing on-call escalation support.</p>
+            </div>
+            <div class="resp-card">
+                <span class="resp-icon"><i class="fas fa-wrench"></i></span>
+                <div class="resp-title">Network Troubleshooting & Upgrades</div>
+                <p class="resp-desc">Executing uCPE network troubleshooting, Check Point firewall upgrades on uCPE, upgrades/patch management, VMware cluster upgrades/firmware alignment, and vSAN health monitoring/storage troubleshooting.</p>
+            </div>
+            <div class="resp-card">
+                <span class="resp-icon"><i class="fas fa-handshake"></i></span>
+                <div class="resp-title">Vendor & Team Coordination</div>
+                <p class="resp-desc">Coordinating with vendors for SD-WAN/NFVI issues, field engineers for hardware replacement, internal engineering/architecture teams for improvements, and ensuring quality through audits and compliance.</p>
+            </div>
+            <div class="resp-card">
+                <span class="resp-icon"><i class="fas fa-check-circle"></i></span>
+                <div class="resp-title">SLA & Optimization Assurance</div>
+                <p class="resp-desc">Ensuring SLA adherence, network stability/performance optimization, compliance with audit/regulatory requirements, and researching innovative solutions to improve network infrastructure.</p>
+            </div>
+        </div>
+    </section>
+    <!-- Experience - Updated to Grid Card Style Like Snapshot -->
+<<section id="experience" style="padding: 100px 50px;">
+
+    <div style="max-width: 1200px; margin: 0 auto;">
+
+        <h2 data-aos="fade-up" style="font-size: 42px; margin-bottom: 60px; position: relative; display: inline-block;">
+            Professional Experience
+            <div style="content: ''; width: 80px; height: 4px; background: #00d4ff; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%);"></div>
+        </h2>
+
+        <!-- COLT HEADER -->
+        <div style="display: flex; align-items: center; margin-bottom: 50px; gap: 20px;">
+            <i class="fas fa-building" style="font-size: 28px; color: #00d4ff;"></i>
+            <div class="exp-company">COLT</div>
+            <span class="exp-current">Current</span>
+        </div>
+
+        <!-- GRID START -->
+        <div class="exp-grid" data-aos="fade-up">
+
+            <!-- COLT CARDS -->
+
+            <div class="exp-card">
+                <div class="exp-role">Versa SD-WAN Leadership</div>
+                <div class="exp-dates">Versa SD-WAN • uCPE • Controllers • Migration</div>
+                <p class="exp-desc">
+                    Leading end-to-end lifecycle of Versa SD-WAN solutions, including deployment, migration from hardware to NFVI, upgrades, and troubleshooting. Managing uCPE devices, SD-WAN controllers/gateways, and ensuring seamless service testing and production rollout.
+                </p>
+                <div class="exp-key-tech">
+                    <span>Versa SD-WAN</span>
+                    <span>uCPE</span>
+                    <span>Migration</span>
+                    <span>Upgrades</span>
+                    <span>Troubleshooting</span>
+                </div>
+            </div>
+
+            <div class="exp-card">
+                <div class="exp-role">NFVI & Cloud Infrastructure</div>
+                <div class="exp-dates">Cisco OpenStack • VMware • vNF Onboarding</div>
+                <p class="exp-desc">
+                    Managing NFVI infrastructure on Cisco OpenStack and VMware platforms. Deploying NFVI solutions, creating vNF compute nodes, handling faults, and performing hardware-to-NFVI migrations. Supporting virtualization stack including ESXi, vCenter, vSAN, and Aria Operations.
+                </p>
+                <div class="exp-key-tech">
+                    <span>NFVI</span>
+                    <span>OpenStack</span>
+                    <span>VMware</span>
+                    <span>vCenter</span>
+                    <span>vSAN</span>
+                </div>
+            </div>
+
+            <div class="exp-card">
+                <div class="exp-role">Incident & Customer Management</div>
+                <div class="exp-dates">P1/P2 Incidents • RCA • SLA</div>
+                <p class="exp-desc">
+                    Handling critical/major service-impacting incidents (P1/P2), performing detailed root cause analysis with preventive planning. Supporting customer change requests, network expansions, and providing on-call escalation support. Ensuring SLA adherence and regulatory compliance.
+                </p>
+                <div class="exp-key-tech">
+                    <span>RCA</span>
+                    <span>SLA</span>
+                    <span>Escalation</span>
+                    <span>Compliance</span>
+                </div>
+            </div>
+
+            <div class="exp-card">
+                <div class="exp-role">Network Optimization & Automation</div>
+                <div class="exp-dates">Python • NSO • Patch Management</div>
+                <p class="exp-desc">
+                    Driving network automation initiatives with Python and NSO. Executing upgrades, patch management, VMware cluster/firmware alignment, vSAN health monitoring, and Check Point firewall upgrades on uCPE. Optimizing network stability and performance. .
+                </p>
+                <div class="exp-key-tech">
+                    <span>Python</span>
+                    <span>NSO</span>
+                    <span>Automation</span>
+                    <span>Optimization</span>
+                </div>
+            </div>
+
+            <!-- HCL -->
+            <div class="exp-card">
+                <div class="exp-header">
+                    <div class="exp-company">HCL</div>
+                    <span class="exp-current">Previous</span>
+                </div>
+                <div class="exp-role">Network Specialist</div>
+                <div class="exp-dates">Nov 2018 – Jun 2019 · Lucknow</div>
+                <p class="exp-desc">
+                    Troubleshot WAN, LAN, MPLS services, traffic management (Riverbed). Deployed monitoring tools (SNMP, Thousand Eyes), Nokia MPLS implementation, vendor coordination, RCA, SLA monitoring, multi-vendor configuration (Nokia, HPE, Alcatel, Cisco), BGP/OSPF/MPLS troubleshooting.
+
+                </p>
+                <div class="exp-key-tech">
+                    <span>MPLS</span>
+                    <span>BGP</span>
+                    <span>OSPF</span>
+                    <span>SNMP</span>
+                    <span>Multi-Vendor</span>
+                </div>
+            </div>
+
+            <!-- AIRTEL -->
+            <div class="exp-card">
+                <div class="exp-header">
+                    <div class="exp-company">Airtel</div>
+                    <span class="exp-current">Previous</span>
+                </div>
+                <div class="exp-role">Sr. Network Executive</div>
+                <div class="exp-dates">Dec 2015 – Nov 2018 · Gurgaon</div>
+                <p class="exp-desc">
+                    Managed LAN/WAN, Cisco/Juniper devices, VLANs, STP, HSRP/VRRP, EIGRP/OSPF routing, basic MPLS/BGP. Performed data monitoring, alarm handling (Netcool/Remedy), ticket resolution, RMA coordination, shift handovers, chronic issue prevention, and NOC teamwork.
+
+                </p>
+                <div class="exp-key-tech">
+                    <span>Cisco</span>
+                    <span>Juniper</span>
+                    <span>MPLS</span>
+                    <span>OSPF</span>
+                    <span>NOC</span>
+                </div>
+            </div>
+
+            <!-- TCS -->
+            <div class="exp-card">
+                <div class="exp-header">
+                    <div class="exp-company">TCS</div>
+                    <span class="exp-current">Previous</span>
+                </div>
+                <div class="exp-role">Operations Executive</div>
+                <div class="exp-dates">Feb 2013 – Dec 2015 · Noida</div>
+                <p class="exp-desc">
+                    Managed network for online examinations (2+ years). Handled LAN/WAN, DHCP, DNS, TCP/IP, OSPF/EIGRP routing, HSRP/VRRP redundancy, IOS upgrades, VLAN/VTP/STP configuration, troubleshooting, server/router/switch operations, and client coordination.
+
+                </p>
+                <div class="exp-key-tech">
+                    <span>LAN/WAN</span>
+                    <span>OSPF</span>
+                    <span>EIGRP</span>
+                    <span>VLAN</span>
+                    <span>Troubleshooting</span>
+                </div>
+            </div>
+
+        </div>
+        <!-- GRID END -->
+
+    </div>
+
+</section>
+
+    <section id="skills">
+        <h2 data-aos="fade-up">Skills</h2>
+        <div class="skills-table" data-aos="fade-up">
+            <div class="skills-header">
+                <div>Technology</div>
+                <div>Purpose & Application</div>
+                <div>Proficiency</div>
+            </div>
+
+            <div class="skill-row">
+                <div class="skill-tech">Versa SD-WAN</div>
+                <div class="skill-purpose">Versa Secure SD-WAN for end-to-end lifecycle management including deployment, migration, upgrades, uCPE, controllers, gateways, and troubleshooting</div>
+                <div class="skill-proficiency"><span class="proficiency-badge">Expert</span></div>
+            </div>
+
+            <div class="skill-row">
+                <div class="skill-tech">NFVI & Virtualization</div>
+                <div class="skill-purpose">Cisco OpenStack, VMware ESXi, vCenter, vSAN, Aria Operations (vROps), storage/compute clusters, vNF onboarding, and NFVI migrations</div>
+                <div class="skill-proficiency"><span class="proficiency-badge">Intermediate</span></div>
+            </div>
+
+            <div class="skill-row">
+                <div class="skill-tech">Routing & Switching</div>
+                <div class="skill-purpose">BGP, OSPF, IS-IS, MPLS, L2VPN/L3VPN, Segment Routing, Cisco Nexus, ASR 9k, Junos, Cisco UCS, and multi-vendor routing/switching</div>
+                <div class="skill-proficiency"><span class="proficiency-badge">Advanced</span></div>
+            </div>
+
+            <div class="skill-row">
+                <div class="skill-tech">Network Automation</div>
+                <div class="skill-purpose">Python (Paramiko), NSO, scripting for automation, configuration management, and disruptive change supervision</div>
+                <div class="skill-proficiency"><span class="proficiency-badge">Intermediate</span></div>
+            </div>
+
+            <div class="skill-row">
+                <div class="skill-tech">SDN & Cloud Infrastructure</div>
+                <div class="skill-purpose">SDN operations, OpenStack-based NFVI, VMware infrastructure for scalable telecom platforms and service testing</div>
+                <div class="skill-proficiency"><span class="proficiency-badge">Advanced</span></div>
+            </div>
+
+            <div class="skill-row">
+                <div class="skill-tech">Incident Management</div>
+                <div class="skill-purpose"> Upgrades on Core Network Versa GW,WC,uCPE,CPE,VA,VD, incident handling (P1/P2), RCA, and security compliance</div>
+                <div class="skill-proficiency"><span class="proficiency-badge">Expert</span></div>
+            </div>
+
+            <div class="skill-row">
+                <div class="skill-tech">Monitoring & Troubleshooting</div>
+                <div class="skill-purpose">SLA adherence, vSAN health monitoring, log analysis, vendor coordination, and critical incident RCA</div>
+                <div class="skill-proficiency"><span class="proficiency-badge">Expert</span></div>
+            </div>
+
+            <div class="skill-row">
+                <div class="skill-tech">Linux & Operating Systems</div>
+                <div class="skill-purpose">Linux administration, JUNOS/IOS-XR upgrades, bug fixes, and system-level troubleshooting</div>
+                <div class="skill-proficiency"><span class="proficiency-badge">Intermediate</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 data-aos="fade-up">Get In Touch</h2>
+        <p data-aos="fade-up"><p>If you would like to get in touch you can either send me an email me or fill in the below form and click "Send Message", I will get back to you as soon as I can!</p>.</p>
+        <div class="contact-links" data-aos="fade-up">
+            <a href="https://www.linkedin.com/in/deepak-mishra-52616a24/" target="_blank">LinkedIn</a>
+            <a href="mailto:dkm12sep@gmail.com,smith.deepak@gmail.com">
+                <i class="fas fa-envelope"></i> Email Me
+                </a>
+        <div class="contact-buttons">
+            <a href="tel:+918527557741" class="call-btn">
+                <i class="fas fa-phone"></i> Call Me
+            </a>
+
+            <a href="https://wa.me/918527557741" target="_blank" class="whatsapp-btn">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+        </div>
+
+    <div class="contact-container" data-aos="fade-up">
+
+        <form id="contact-form"
+              action="https://formsubmit.co/dkm12sep@gmail.com"
+              method="POST"
+              class="contact-form">
+            <input type="hidden" name="_cc" value="dkm12sep@gmail.com">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+
+            <button type="submit">Send Message</button>
+
+        </form>
+
+
+    </div>
+</section>
+
+        <!-- Call Button -->
+
+
+    </div>
+</section>
+
+
+    <footer>
+        <p>© 2026 Deepak Mishra. All rights reserved.</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        document.getElementById("contact-form").addEventListener("submit", function() {
+    document.getElementById("success-message").style.display = "block";
+});
+        AOS.init({ duration: 1000 });
+
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 120, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#00d4ff" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.7, "random": true },
+                "size": { "value": 4, "random": true },
+                "line_linked": { "enable": true, "distance": 150, "color": "#00d4ff", "opacity": 0.4, "width": 1 },
+                "move": { "enable": true, "speed": 6, "direction": "none", "random": false, "straight": false, "out_mode": "out" }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "repulse" }, "resize": true }
+            },
+            "retina_detect": true
+        });
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                document.querySelector('nav').classList.add('scrolled');
+            } else {
+                document.querySelector('nav').classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
